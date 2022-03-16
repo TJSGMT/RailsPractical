@@ -8,21 +8,15 @@
     <title>Document</title>
 </head>
 <body>
-
 <div class="d-flex  align-items-center  justify-content-center">
 <h1> Book Index</h1>
  </div>   <br><br>
-
-
-
  <table class="table  table-hover">
   <thead>
     <tr>
       <th scope="col">Book name</th>
       <th scope="col">Book price</th>
-     
       <th></th>
-
     </tr>
   </thead>
   <tbody>
@@ -30,22 +24,15 @@
     <tr> 
       <th scope="row"><%=book.name%></th>
       <td><%=book.price%></td>
-      
       <td><button type="button" class="btn btn-link"><%= link_to "Show", book_path(book), class:"btn btn-primary", method: :get %></button>
             <button type="button" class="btn btn-link"><%= link_to " Edit", edit_book_path(book), class:"btn btn-primary", method: :get %></button>
             <button type="button" class="btn btn-link"><%= button_to " Destroy", book_path(book), class:"btn btn-primary", method: :delete %></button>
       </td>
-
     </tr>
     <%end%>
   </tbody>
 </table><br>
-
-<%# <button type="button " class="btn btn-link"><%= link_to "Add new book", new_book_path, class:"btn btn-primary", method: :get   %>
-<%# </button>  %> 
 <button type="button" class="btn btn-link"><%= link_to "Add new Book  ", new_book_path, class:"btn btn-primary", method: :get   %>
 </button>
-
-
 </body>
 </html>
