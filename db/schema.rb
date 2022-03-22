@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_15_133442) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_22_034432) do
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -35,6 +35,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_133442) do
     t.index ["author_id"], name: "index_books_on_author_id"
   end
 
+  create_table "faculties", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.integer "phone_no"
+    t.string "email"
+    t.string "designation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "homes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,6 +62,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_133442) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "brand_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "birthdate"
+    t.string "department"
+    t.string "terms_of_usage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

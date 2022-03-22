@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+<div class="d-flex  align-items-center  justify-content-center">
+<h1> Faculty's Index</h1>
+ </div><br><br>
+<table class="table  table-hover">
+  <thead>
+    <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>phone no</th>
+    <th>Birth Date</th>
+    <th>Email</th>
+    <th>Designation</th>
+    <th></th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @faculties.each do |faculty|%>
+    <tr> 
+    <th><%=faculty.firstname%></th>
+    <td><%=faculty.lastname%></td>
+    <td><%=faculty.phone_no%></td>
+     <td><%=faculty.birthdate%></td>
+    <td><%=faculty.email%></td>
+    <td><%=faculty.designation%></td>
+    <td><button type="button" class="btn btn-link"><%= link_to "Show", faculty_path(faculty), class:"btn btn-primary", method: :get %></button>
+      <button type="button" class="btn btn-link"><%= link_to " Edit", edit_faculty_path(faculty), class:"btn btn-primary", method: :get %></button>
+      <button type="button" class="btn btn-link"><%= button_to " Destroy", faculty_path(faculty), class:"btn btn-primary", method: :delete %></button>
+    </td>
+    </tr>
+    <%end%>
+  </tbody>
+</table><br>
+<button type="button " class="btn btn-link"><%= link_to "Add new faculty", new_faculty_path, class:"btn btn-primary", method: :get   %>
+</button> 
+</button>
+</body>
+</html>
+  

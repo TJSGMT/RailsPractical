@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+  # get 'faculties/index'
+  # get 'faculties/new'
+  # get 'faculties/create'
+  # get 'faculties/show'
+  # get 'faculties/edit'
+  # get 'faculties/update'
+  # get 'faculties/destroy'
+  # get 'students/index'
+  # get 'students/new'
+  # get 'students/create'
+  # get 'students/show'
+  # get 'students/edit'
+  # get 'students/update'
+  # get 'students/destroy'
+  # get 'index/new'
+  # get 'index/create'
+  # get 'index/show'
+  # get 'index/edit'
+  # get 'index/update'
+  # get 'index/destroy'
   # get 'books/index'
   # get 'books/new'
   # get 'books/create'
@@ -30,6 +50,8 @@ Rails.application.routes.draw do
   resources :products
   resources :authors
   resources :books
+  resources :students
+  resources :faculties
 
 
   # root "products#index"
