@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_22_034432) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_23_103238) do
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -43,6 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_22_034432) do
     t.string "designation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "birthdate"
   end
 
   create_table "homes", force: :cascade do |t|
@@ -69,11 +70,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_22_034432) do
   create_table "students", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
-    t.string "birthdate"
+    t.date "birthdate"
     t.string "department"
     t.string "terms_of_usage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
   end
 
   add_foreign_key "books", "authors"

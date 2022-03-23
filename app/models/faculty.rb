@@ -1,4 +1,7 @@
 class Faculty < ApplicationRecord
+  after_create do |faculty|
+    puts "Birthdate check!!!!"
+  end
   validates :firstname, :lastname, :email, presence:true
   validates :phone_no, length: { is: 10 }
   validates :email, confirmation:true , format: { with: URI::MailTo::EMAIL_REGEXP } , uniqueness: true, presence:true
