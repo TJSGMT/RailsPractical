@@ -1,0 +1,10 @@
+<h1>Products Index</h1>
+
+<%= button_to "Add new Product", new_product_path, method: :get %>
+<ul>
+    <% @products.each do |product|%>
+        <li><%= link_to product.name, product_path(product)%></li>
+    <% end %>    
+</ul>
+
+<%# <p>Find me in app/views/products/index.html.erb</p> %>
