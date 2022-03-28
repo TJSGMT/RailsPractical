@@ -1,0 +1,16 @@
+<% if flash[:errors] %>
+<%= flash[:errors] %>
+<% end %>
+<%= form_for @student, remote: false do |f| %>
+<h4><%= f.label :firstname, class: "form-label" %></h4>
+<p><%= f.text_field :firstname, class: "form-control" %></p><br>
+<h4><%= f.label :lastname, class: "form-label"%></h4>
+<h4><%= f.text_field :lastname, class: "form-control" %></h4><br>
+<h4><%= f.label :Date, class: "form-label" %></h4>
+<h5><%= f.date_select :birthdate, start_year: 1800, end_year: Time.now.year, class: "form-control" %></h5><br>
+<h4><%= f.label :email, class: "form-label" %></h4>
+<h4><%= f.text_field :email, class: "form-control" %></h4> <br>
+<h4><%= f.label :Department, class: "form-label" %></h4>
+<h4><%= f.text_field :department, class: "form-control" %></h4> <br>
+<h4><%= f.submit class: "btn btn-primary"  %></h4>
+<% end %>
