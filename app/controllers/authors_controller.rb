@@ -1,4 +1,6 @@
 class AuthorsController < ApplicationController
+  before_action :find_author, only: [:show, :edit, :update]
+
   def index
     @authors= Author.all
   end
@@ -15,27 +17,27 @@ class AuthorsController < ApplicationController
       flash[:notice] = @author.errors.full_messages
       redirect_to new_author_path
     end
-  
   end
 
-  def show
-    @author = Author.find(params[:id])
+  def show    
   end
 
   def edit
-    @author = Author.find(params[:id])
   end
 
-  def update
-    @author = Author.find(params[:id])
+  def update  
     @author.update(params.require(:author).permit(:first_name,:last_name,:dob,:email))
     redirect_to authors_path
   end
 
   def destroy
-    # binding.pry
     @author = Author.find(params[:id].to_i) 
        @author.destroy
     redirect_to authors_path
+  end
+
+  private
+  def find_author
+    @author = Author.find(params[:id])
   end
 end

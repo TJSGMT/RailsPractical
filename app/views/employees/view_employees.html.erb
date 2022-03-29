@@ -1,0 +1,117 @@
+<h1>Employee's view page</h1>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5>Employee's who's having age<20 & <40</h5>
+        <% @limitage.each do |e| %> 
+          <%= e.firstname%><br>
+        <% end %>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5>Availability of Employee</h5>
+        <%@Aemp.each do |e| %>
+        <%=e.firstname%><br>
+      <%end%>
+
+    </div>
+  </div>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5>Having exact number is 5 and age>25</h5>
+        <% @Gage.each do |e| %> 
+          <%=e.firstname%><br><br>
+        <% end%>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5>Having exact number is 5 and age < 25</h5>
+        <% @Lage.each do |e| %> 
+          <%=e.firstname%><br>
+        <% end%>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5>Employees who's having salary >45000</h5>
+        <% @salary.each do |e| %> 
+          <%=e.firstname%><br>
+        <% end%>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5>Grouping employees by no of order</h5>
+        <% @Group.each do |e| %> 
+          <%=e.firstname%><br>
+        <%end%>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem">
+     <div class="card-body">
+        <h5>Employee's no of order in ascending order</h5>
+          <% @asc.each do |e| %> 
+            <%=e.firstname%><br>
+          <%end %>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+        <h5>Employee's age in descending order</h5>
+          <% @desc.each do |e| %> 
+          <%=e.firstname%><br>
+         <%end%>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+        <h4>Write example for keywords</h4>
+        <h5>Unscope</h5>
+           <% @unscope.each do |e| %>
+              <%=e.firstname%><br>
+           <%end%>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+       <h5>Only</h5>
+          <% @only.each do |e| %> 
+            <%=e.firstname%><br>
+          <%end%>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5>Reselect</h5>  
+        <% @reselect.each do |e| %>
+          <%=e.firstname%>
+          <%=e.lastname%><br>
+        <%end%>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5>Re-order</h5>
+        <% @reorder.each do |e| %>
+          <%=e.id%> 
+          <%= e.firstname %><br>
+        <% end %>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+      <h5>Reverse order</h5>
+        <% @revorder.each do |e| %>
+          <%=e.firstname%><br>
+        <%end%>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem">
+    <div class="card-body">
+       <h5>Employee created before today</h5>
+          <% @today.each do |e| %> 
+            <%=e.firstname%><br>
+          <%end%>
+    </div>  
+  </div>
