@@ -18,5 +18,4 @@ Rails.application.routes.draw do
   # root "products#index"
   post '/increase', to: "employees#increase"
   post '/decrease', to: "employees#decrease"
-  post '/availability_of_employee', to: "employees#availability_of_employee"
 end
