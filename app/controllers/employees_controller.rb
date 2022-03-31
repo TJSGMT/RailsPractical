@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :find_employee, only: [:show, :edit, :update]
+  before_action :set_params, only: [:show, :edit, :update]
 
   def index
     @employees = Employee.all
@@ -43,9 +43,9 @@ class EmployeesController < ApplicationController
   end
   
   def destroy
-    @employee = Employee.find(params[:id].to_i) 
-    @employee.destroy
-    redirect_to employees_path
+      @employee = Employee.find(params[:id].to_i) 
+      @employee.destroy
+      redirect_to employees_path
   end
   
   def search
@@ -53,20 +53,20 @@ class EmployeesController < ApplicationController
   end
 
   def view_employees
-    @limitage = Employee.where('age> 20' && 'age < 40')
-    @Aemp = Employee.where("full_time_available= 'Yes' ")
-    @Gage = Employee.where("no_of_order=5 and age> 25")
-    @Lage = Employee.where("no_of_order=5 and age < 25")
-    @salary = Employee.where('Salary> 45000')
-    @Group = Employee.group("no_of_order").having("no_of_order> ?",5)
-    @asc = Employee.order('no_of_order ASC')
-    @desc = Employee.order('age DESC ')
-    @unscope = Employee.where(' no_of_order> 30').limit(10).order('no_of_order DESC').unscope(:order)
-    @only = Employee.where('age> 40').limit(5).order('age desc').only(:order,:where)
-    @reselect = Employee.select(:email, :no_of_order).reselect(:firstname, :lastname)
-    @reorder = Employee.order('email DESC').reorder('id ASC')
-    @revorder = Employee.where("no_of_order> 20").reverse_order
-    @today = Employee.where("created_at < ?", 1.days.ago)
+      @limitage= Employee.where('age> 20' && 'age < 40')
+      @Aemp = Employee.where("full_time_available= 'Yes' ")
+      @Gage = Employee.where("no_of_order=5 and age> 25")
+      @Lage =Employee.where("no_of_order=5 and age < 25")
+      @salary =Employee.where('Salary> 45000')
+      @Group=Employee.group("no_of_order").having("no_of_order> ?",5)
+      @asc=Employee.order('no_of_order ASC')
+      @desc=Employee.order('age DESC ')
+      @unscope=Employee.where(' no_of_order> 30').limit(10).order('no_of_order DESC').unscope(:order)
+      @only=Employee.where('age> 40').limit(5).order('age desc').only(:order,:where)
+      @reselect=Employee.select(:email, :no_of_order).reselect(:firstname, :lastname)
+      @reorder=Employee.order('email DESC').reorder('id ASC')
+      @revorder=Employee.where("no_of_order> 20").reverse_order
+      @today=Employee.where("created_at < ?", 1.days.ago)
   end
 
   def increase
@@ -92,7 +92,7 @@ class EmployeesController < ApplicationController
     params.require(:employee).permit(:firstname,:lastname,:email,:age,:no_of_order,:full_time_available,:salary)
   end
 
-  def find_employee
+  def set_params
     @employee = Employee.find(params[:id])
   end
 end
