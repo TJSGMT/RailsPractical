@@ -1,0 +1,31 @@
+#order_customer_id {
+    font-family: var(--bs-font-sans-serif);
+    background-color:#0d6efd;
+    text-align: center;
+    margin: .25rem  .125rem;
+    border-radius: 5px;
+    border: 0px;
+    padding: 7px;
+    color: rgb(255, 255, 255);
+}
+#order_product1_id{
+    font-family: var(--bs-font-sans-serif);
+    background-color:#0d6efd;
+    text-align: center;
+    margin: .25rem  .125rem;
+    border-radius: 5px;
+    border: 0px;
+    padding: 7px;
+    color: rgb(255, 255, 255);
+
+}
+#order_status{
+    font-family: var(--bs-font-sans-serif);
+    background-color:#0d6efd;
+    text-align: center;
+    margin: .25rem  .125rem;
+    border-radius: 5px;
+    border: 0px;
+    padding: 7px;
+    color: rgb(255, 255, 255);
+}
