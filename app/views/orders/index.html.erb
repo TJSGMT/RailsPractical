@@ -12,53 +12,14 @@
   </div>
   <div class="container">
     <form class="d-flex">
-      <%= form_tag product1s_path, method: :get do %>
-        <%= text_field_tag :searchParams, params[:searchParams], class: "form-control me-2", placeholder:"Search By Product Name" %>
+
+      <%= form_tag orders_path, method: :get do %>
+        <%= text_field_tag :product_name, params[:product_name], class: "form-control me-2", placeholder:"Search By Product Name" %>
+        <%= select_tag(:status, options_for_select(Order.statuses.keys)) %>
         <%= submit_tag "search", class:"btn btn-outline-success" %>
       <% end %>
-
-      <%= form_tag orders_path, :method => 'get' do %>
-        <p>
-          <%= select_tag(:search, options_for_select(Order.statuses.keys)) %>
-          <%= submit_tag "Apply" %>
-        </p>
-      <% end %>
-  
+ 
     </form> <br>  
-    <table class="table  table-hover">
-      <% if !(params[:searchParams].blank?) %>
-      <thead>   
-      <tr>
-        <th scope="col">Customer Id</th>
-        <th scope="col">Customer Name</th>
-        <th scope="col">Order Id</th>
-        <th scope="col">Product Name</th>  
-        <th scope="col">Quantity</th>
-        <th scope="col">Total price</th>
-        <th scope="col">Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-      <% @orders_by_product.each do |order|%>
-      <tr>  
-        <th scope="row"><%=order.customer_id%></th>
-        <td><%=order.customer.fname+" "+order.customer.lname%></td>
-        <td><%=order.id%></td>
-        <td><%= order.product1&.title %></td>
-        <td><%=order.quantity%></td>
-        <td><%=total_price(order)%></td>
-        <td><%=order.status%></td>   
-        <td><button type="button" class="btn btn-link"><%= link_to "Show", order_path(order), class:"btn btn-primary", method: :get %></button>
-          <button type="button" class="btn btn-link"><%= link_to " Edit", edit_order_path(order), class:"btn btn-primary", method: :get %></button>
-          <button type="button" class="btn btn-link"><%= button_to " Destroy", order_path(order), class:"btn btn-primary", method: :delete %></button>
-        </td>
-      </tr>
-      <%end%> 
-      <% end %>
-    </tbody>
-    </table><br> 
-
 <table class="table  table-hover">
   <thead>   
   <tr>

@@ -2,7 +2,7 @@ class Product1sController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
 
     def index
-      @product1s = Product1.unscoped
+      @product1s = Product1.all
 
     end
   
@@ -25,6 +25,10 @@ class Product1sController < ApplicationController
   
     def edit
     end
+
+    def show_product
+      @product1=Product1.all
+    end
   
     def update
       @product1.update(product1_parmas)
@@ -39,10 +43,6 @@ class Product1sController < ApplicationController
     
     def product1_parmas
       params.require(:product1).permit(:title,:description, :price, :capacity, :is_active, :status)
-    end
-
-    def show_product
-      @product1=Product1.all
     end
 
     def find_product

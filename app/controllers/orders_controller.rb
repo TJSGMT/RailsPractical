@@ -3,15 +3,12 @@ class OrdersController < ApplicationController
   
   def index
     @orders = Order.all
-    searchParams = [:search_query, :query]
-    if params[:searchParams]
-      @orders = Order.all
-      @orders = Order.where(status:'booked') if params[:searchParams] == 'booked'
-      @orders = Order.where(status:'cancelled') if params[:searchParams] == 'cancelled'
-      @orders_by_product = Order.where("product1_id=?",Product1.where("title = ?",params[:searchParams]).pluck(:id))
-    else
-      @orders = Order.all
-    end
+      @orders = @orders.where(status:'booked') if params[:status] == 'booked'
+      @orders = @orders.where(status:'cancelled') if params[:status] == 'cancelled'
+      if params[:product_name].present?
+        @product1_id = Product1.where("title = ?",params[:product_name]).pluck(:id)
+        @orders = @orders.where(product1_id: @product1_id)  
+      end
   end
 
   def new
