@@ -3,7 +3,6 @@ class Product1sController < ApplicationController
 
     def index
       @product1s = Product1.all
-
     end
   
     def new
@@ -38,7 +37,7 @@ class Product1sController < ApplicationController
     def destroy
       @product1 = Product1.unscoped.find(params[:id])
       if @product1.destroy
-      redirect_to product1s_path
+        redirect_to product1s_path
       end
     
     def product1_parmas

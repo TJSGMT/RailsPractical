@@ -6,9 +6,9 @@
             <div class="text-center"><b>Most Sales Product By Quantity<b><br>
               <% Order.select("customer_id, sum(quantity) as Sum_Quantity").group("customer_id").order(Sum_Quantity: :desc).first(3).each do |o| %>
                 <tr>
-                    <td class="text-center">cusotmer Id :- <%= o.customer_id %> </td><br>
-                    <td class="text-center">customer Name :- <%= o.customer.fname + " " + o.customer.lname %> </td><br>
-                    <td class="text-center"> Quantity :- <%= o.Sum_Quantity %> </td><br><br>
+                  <td class="text-center">cusotmer Id :- <%= o.customer_id %> </td><br>
+                  <td class="text-center">customer Name :- <%= o.customer.fname + " " + o.customer.lname %> </td><br>
+                  <td class="text-center"> Quantity :- <%= o.Sum_Quantity %> </td><br><br>
                 </tr>
               <% end %>
           </div>  
@@ -23,9 +23,9 @@
           <div class="text-center"><b>Most Sales Product By Price<b><br>
             <% Order.select("customer_id, sum(total_price) as Sum_Total_price").group("customer_id").order(Sum_Total_price: :desc).first(3).each do |o| %>
               <tr>
-                  <td class="text-center">Customer Id:-  <%= o.customer_id %> </td><br>
-                  <td class="text-center"> Customer Name:-  <%= o.customer.fname + " " + o.customer.lname %> </td><br>
-                  <td class="text-center"> Quantity:-  <%= o.Sum_Total_price %> </td><br><br>
+                <td class="text-center">Customer Id:-  <%= o.customer_id %> </td><br>
+                <td class="text-center"> Customer Name:-  <%= o.customer.fname + " " + o.customer.lname %> </td><br>
+                <td class="text-center"> Quantity:-  <%= o.Sum_Total_price %> </td><br><br>
               </tr>
            <% end %>
         </div>
@@ -40,10 +40,10 @@
           <div class="text-center"> top 5 customer who has maximum booked orders <br>
             <% Order.group(:customer_id).where(status:0).each do |o| %>
               <tr>
-                  <td class="text-center"> <%= Order.where(customer_id:o.customer_id).where(status:0).count %>. </td>
-                  <td class="text-center"> <%= o.customer.fname + " " + o.customer.lname %> </td><br>
-                  <td class="text-center"> <%= o.customer.email %> </td><br>
-                  <td class="text-center"> <%= o.customer.phone_number %> </td><br><br>
+                <td class="text-center"> <%= Order.where(customer_id:o.customer_id).where(status:0).count %>. </td>
+                <td class="text-center"> <%= o.customer.fname + " " + o.customer.lname %> </td><br>
+                <td class="text-center"> <%= o.customer.email %> </td><br>
+                <td class="text-center"> <%= o.customer.phone_number %> </td><br><br>
               </tr>
             <% end %>
         </div>  
@@ -58,10 +58,10 @@
           <div class="text-center"> top 5 customer who has maximum Cancelled orders <br>
             <% Order.group(:customer_id).where(status:1).each do |o| %>
               <tr>
-                  <td class="text-center"> <%= Order.where(customer_id:o.customer_id).where(status:1).count %>. </td>
-                  <td class="text-center"> <%= o.customer.fname + " " + o.customer.lname %> </td><br>
-                  <td class="text-center"> <%= o.customer.email %> </td><br>
-                  <td class="text-center"> <%= o.customer.phone_number %> </td><br><br>
+                <td class="text-center"> <%= Order.where(customer_id:o.customer_id).where(status:1).count %>. </td>
+                <td class="text-center"> <%= o.customer.fname + " " + o.customer.lname %> </td><br>
+                <td class="text-center"> <%= o.customer.email %> </td><br>
+                <td class="text-center"> <%= o.customer.phone_number %> </td><br><br>
               </tr>
             <% end %>
           </div>
