@@ -1,0 +1,20 @@
+<% if flash[:errors] %>
+  <%= flash[:errors] %>
+<% end %>
+<%= form_for @employee, remote: false do |f| %>
+  <h4><%= f.label :first_name, class: "form-label" %></h4>
+  <p><%= f.text_field :firstname, class: "form-control" %></p><br>
+  <h4><%= f.label :last_name, class: "form-label"%></h4>
+  <h4><%= f.text_field :lastname, class: "form-control" %></h4><br>
+  <h4><%= f.label :Email, class: "form-label" %></h4>
+  <h4><%= f.text_field :email, class: "form-control" %></h4> <br>
+  <h4><%= f.label :Age, class: "form-label" %></h4>
+  <h4><%= f.text_field :age, class: "form-control" %></h4> <br>
+  <h4><%= f.label :No_of_order, class: "form-label" %></h4>
+  <h4><%= f.text_field :no_of_order, class: "form-control" %></h4> <br>
+  <h4><%= f.label :Full_time_availbale, class: "form-label" %></h4>
+  <%= f.select :full_time_available, options_for_select([:Yes, :No]), class: 'form-control' %><br><br>
+  <h4><%= f.label :Salary, class: "form-label" %></h4>
+  <h4><%= f.text_field :salary, class: "form-control" %></h4> <br>
+  <h4><%= f.submit class: "btn btn-primary"  %></h4>
+<% end %>

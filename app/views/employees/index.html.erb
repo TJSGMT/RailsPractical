@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><br><br>
+  <div class="d-flex  align-items-center  justify-content-center mb-3">
+    <h1> Employee's Index</h1>
+  </div>
+  <div class="container">
+ <form class="d-flex">
+  <%= form_tag employees_path, method: :get do %>
+    <%= email_field_tag :search_query, params[:search_query], class: "form-control me-2" %>
+    <%= submit_tag "search", class:"btn btn-outline-success" %>
+  <% end %>
+</form>   <br>
+<!-- Email Error -->
+<% if flash[:notice] %> 
+  <% flash.each do |name,message| %>
+   <p class="text-danger"><%= message%></p>
+  <% end %>
+<% end %>
+
+<table class="table  table-hover">
+  <thead>
+  <tr>
+    <th scope="col">First name</th>
+    <th scope="col">Last name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Age</th>
+    <th scope="col">No. of Order</th>
+    <th scope="col">Full time available</th>
+    <th scope="col">Salary</th>
+  </tr>
+</thead>
+<tbody>
+  <% @employees.each do |employee|%>
+  <tr> 
+    <th scope="row"><%=employee.firstname%></th>
+    <td><%=employee.lastname%></td>
+    <td><%=employee.email%></td>
+    <td><%=employee.age%></td>
+    <td><%=employee.no_of_order%></td>
+    <td><%=employee.full_time_available%></td>
+    <td><%=employee.salary%></td>
+    <td><button type="button" class="btn btn-link"><%= link_to "Show", employee_path(employee), class:"btn btn-primary", method: :get %></button>
+      <button type="button" class="btn btn-link"><%= link_to " Edit", edit_employee_path(employee), class:"btn btn-primary", method: :get %></button>
+      <button type="button" class="btn btn-link"><%= button_to " Destroy", employee_path(employee), class:"btn btn-primary", method: :delete %></button>
+    </td>
+  </tr>
+  <%end%> 
+</tbody>
+</table><br>                                      
+     <button type="button " class="btn btn-link"><%= link_to "Add new Employee", new_employee_path, class:"btn btn-primary", method: :get %></button> 
+      <button type="button" class="btn btn-link"><%= button_to " Increase order", increase_path, class:"btn btn-primary", method: :post %></button>
+      <button type="button" class="btn btn-link"><%= button_to "Decrease order", decrease_path, class:"btn btn-primary", method: :post %></button><br><br>
+</body>
+</html>
