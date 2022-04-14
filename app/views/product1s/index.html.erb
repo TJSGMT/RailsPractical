@@ -28,22 +28,22 @@
   </tr>
 </thead>
 <tbody>
-  <% Product1.all.each do |product1|%>
-  <tr> 
-    <th scope="row"><%=product1.title%></th>
-    <td><%=product1.description%></td>
-    <td><%=product1.price%></td>
-    <td><%=product1.capacity%></td>
-    <td><%=product1.is_active%></td>
-    <td><%=product1.status%></td>
-    <td><button type="button" class="btn btn-link"><%= link_to "Show", product1_path(product1), class:"btn btn-primary", method: :get %></button>
-      <button type="button" class="btn btn-link"><%= link_to " Edit", edit_product1_path(product1), class:"btn btn-primary", method: :get %></button>
-      <button type="button" class="btn btn-link"><%= button_to " Destroy", product1_path(product1), class:"btn btn-primary", method: :delete %></button>
-    </td>
-  </tr>
+  <% @product1s.each do |product1|%>
+    <tr> 
+      <th scope="row"><%=product1.title%></th>
+      <td><%=product1.description%></td>
+      <td><%=product1.price%></td>
+      <td><%=product1.capacity%></td>
+      <td><%=product1.is_active%></td>
+      <td><%=product1.status%></td>
+      <td><button type="button" class="btn btn-link"><%= link_to "Show", product1_path(product1), class:"btn btn-primary", method: :get %></button>
+        <button type="button" class="btn btn-link"><%= link_to " Edit", edit_product1_path(product1), class:"btn btn-primary", method: :get %></button>
+        <button type="button" class="btn btn-link"><%= button_to " Destroy", product1_path(product1), class:"btn btn-primary", method: :delete %></button>
+      </td>
+    </tr>
   <%end%> 
 </tbody>
 </table><br>                                      
-     <button type="button " class="btn btn-link"><%= link_to "Add new product", new_product1_path, class:"btn btn-primary", method: :get %></button> 
+<button type="button " class="btn btn-link"><%= link_to "Add new product", new_product1_path, class:"btn btn-primary", method: :get %></button> 
 </body>
 </html>
