@@ -15,7 +15,6 @@ class AuthorsController < ApplicationController
       flash[:notice] = @author.errors.full_messages
       redirect_to new_author_path
     end
-  
   end
 
   def show
@@ -33,7 +32,6 @@ class AuthorsController < ApplicationController
   end
 
   def destroy
-    # binding.pry
     @author = Author.find(params[:id].to_i) 
        @author.destroy
     redirect_to authors_path
