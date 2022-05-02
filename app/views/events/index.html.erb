@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <p class="alert alert-success"><%= notice %></p>
+    <div class="d-flex  align-items-center  justify-content-center">
+      <h1> Events</h1>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+      <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+          <%if session[:user_id]%>
+            <%= link_to "Profile", user_path(session[:user_id])  , class:'btn btn-link' %>
+            <%= button_to "Logout", logout_path , class:'btn btn-link',method: :delete %>
+          <% else %>
+               <h5 class="text-white h4">please do Login</h5>
+            <button type="button" class="btn btn-link"><%= link_to "Login", sign_in_path, method: :get  %></button>
+          <%end%>  
+        </div>
+      </div>
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav><br>
+          <%= form_with url:events_path, method: :get do |f| %>
+            <%= f.select :category, Category.categories.keys %>
+            <%= f.submit "Apply-Filters" %>
+          <% end %>
+          <%= button_to "Clear-filters",clear_path %>  
+      <table class="table  table-hover">
+        <thead>
+          <tr>
+            <th>Event name</th>
+            <th>Description</th>
+            <th>Event Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @events.each do |event|%>
+            <tr>
+              <th><%=event.name%></th>
+              <td><%=event.description%></td>
+              <td><%=event.event_date%></td>
+              <td><button type="button" class="btn btn-link"><%= link_to "Show", event_path(event), class:"btn btn-primary", method: :get %></button></td>
+              <td><button type="button" class="btn btn-link"><%= link_to "Enroll event", enrollment_path(event), class:"btn btn-success", method: :get %></button></td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+      <button type="button " class="btn btn-link"><%= link_to "Add new Event", new_event_path, class:"btn btn-primary", method: :get %></button> 
+      <br>
+    </div>
+  </body>
+</html>

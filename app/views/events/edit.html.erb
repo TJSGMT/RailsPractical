@@ -1,0 +1,15 @@
+<% if session[:user_id] %>
+  <%= form_for @event, remote: false do  |f| %>
+    <h4><%= f.label :Event_name, class: "form-label" %></h4>
+    <h4><%= f.text_field :name, class: "form-control" %></h4> <br>
+    <h4><%= f.label :Description, class: "form-label" %></h4>
+    <h4><%= f.text_field :description, class: "form-control" %></h4> <br>
+    <h4><%= f.label :Date, class: "form-label" %></h4>
+    <h5><%= f.date_select :event_date, start_year: 1800, end_year: Time.now.year, class: "form-control" %></h5><br>
+    <h5><%= f.label :category %></h5>
+    <h5><%= f.select :category, Category.categories.keys %><br><br></h5>
+    <h4><%= f.submit class: "btn btn-primary"  %></h4>
+  <%end%> 
+<% else %>
+  <%= link_to "Login", sign_in_path %>
+<% end %>
