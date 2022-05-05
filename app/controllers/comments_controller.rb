@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :findcomment ,only: [:show, :edit, :update, :delete, :like, :unlike]
+  before_action :find_comment ,only: [:show, :edit, :update, :delete, :like, :unlike]
   def index
     @comments = Comment.all
   end
@@ -47,7 +47,7 @@ class CommentsController < ApplicationController
     redirect_to event_path(event_id)
   end
 
-  def findcomment
+  def find_comment
     @comment = Comment.find(params[:id])
   end
   
