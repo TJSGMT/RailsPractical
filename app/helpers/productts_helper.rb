@@ -1,0 +1,2 @@
+module ProducttsHelper
+end

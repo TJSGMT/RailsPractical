@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><br><br>
+  <div class="d-flex  align-items-center  justify-content-center mb-3">
+    <h1> Product's Index</h1>
+  </div>
+<div class="container">
+<table class="table  table-hover">
+  <thead>   
+  <tr>
+    <th scope="col">Title</th>
+    <th scope="col">Description</th>
+    <th scope="col">Price</th>
+  </tr>
+</thead>
+<tbody>
+  <% Productt.all.each do |productt|%>
+  <tr> 
+    <th scope="row"><%=productt.name%></th>
+    <td><%=productt.description%></td>
+    <td><%=productt.price%></td>
+    <td><button type="button" class="btn btn-link"><%= link_to "Show", productt_path(@productt), class:"btn btn-primary", method: :get %></button>
+      <button type="button" class="btn btn-link"><%= link_to " Edit", edit_productt_path(@productt), class:"btn btn-primary", method: :get %></button> 
+      <button type="button" class="btn btn-link"><%= button_to " Destroy", productt_path(@productt), class:"btn btn-primary", method: :delete %></button> 
+    </td>
+  </tr>
+  <%end%> 
+</tbody>
+</table><br>                                      
+     <button type="button " class="btn btn-link"><%= link_to "Add new product", new_product1_path, class:"btn btn-primary", method: :get %></button>  
+</div>     
+</body>
+</html>

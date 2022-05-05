@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><br><br>
+  <div class="d-flex  align-items-center  justify-content-center mb-3">
+    <h1> order's Index</h1>
+  </div>
+  <div class="container">
+    <form class="d-flex">
+
+      <%= form_tag orders_path, method: :get do %>
+        <%= text_field_tag :product_name, params[:product_name], class: "form-control me-2", placeholder:"Search By Product Name" %>
+        <%= select_tag(:status, options_for_select(Order.statuses.keys)) %>
+        <%= submit_tag "search", class:"btn btn-outline-success" %>
+      <% end %>
+ 
+    </form> <br>  
+<table class="table  table-hover">
+  <thead>   
+  <tr>
+        <%# <th scope="col">Customer Id</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Order Id</th>
+        <th scope="col">Product Name</th>   %>
+    <th scope="col">Quantity</th>
+    <th scope="col">Total price</th>
+    <th scope="col">Status</th>
+  </tr>
+</thead>
+<tbody>
+  <% @orderrs.each do |orderr|%>
+  <tr>  
+    <th scope="row"><%=orderr.customer_id%></th>
+    <%# <td><%=orderr.customer.fname+" "+orderr.customer.lname%></td>
+    <%# <td><%=orderr.id%></td> %>
+    <%# <td><%= orderr.product1&.title %></td> %> %>
+    <td><%=orderr.quantity%></td>
+    <td><%=orderr.total_price%></td>
+    <td><%=orderr.status%></td>   
+    <td><button type="button" class="btn btn-link"><%= link_to "Show", orderr_path(orderr), class:"btn btn-primary", method: :get %></button>
+      <button type="button" class="btn btn-link"><%= link_to " Edit", edit_orderr_path(orderr), class:"btn btn-primary", method: :get %></button>
+      <button type="button" class="btn btn-link"><%= button_to " Destroy", orderr_path(orderr), class:"btn btn-primary", method: :delete %></button>
+    </td>
+  </tr>
+  <%end%> 
+</tbody>
+</table><br>                                      
+     <button type="button " class="btn btn-link"><%= link_to "Add new orderr", new_orderr_path, class:"btn btn-primary", method: :get %></button> 
+
+</body>
+</html>
