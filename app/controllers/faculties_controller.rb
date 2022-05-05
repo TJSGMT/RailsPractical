@@ -3,13 +3,13 @@ class FacultiesController < ApplicationController
     @faculties= Faculty.all
   end 
 
-    def new 
+  def new 
     @faculty = Faculty.new
   end
 
   def create
       @faculty = Faculty.new(faculty_parmas)
-    if @faculty.save
+      if @faculty.save               
       redirect_to faculties_path
     else
       flash[:errors] = @faculty.errors.full_messages

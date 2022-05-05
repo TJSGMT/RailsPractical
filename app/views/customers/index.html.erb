@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><br><br>
+  <div class="d-flex  align-items-center  justify-content-center mb-3">
+    <h1> Customer's Index</h1>
+  </div>
+  <div class="container">
+  <br>
+<% if flash[:notice] %> 
+  <% flash.each do |name,message| %>
+   <p class="text-danger"><%= message%></p>
+  <% end %>
+<% end %>
+<table class="table  table-hover">
+  <thead>   
+    <tr>
+      <th scope="col">first name</th>
+      <th scope="col">last name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone number</th>
+    </tr>
+</thead>
+<tbody>
+  <% @customers.each do |customer|%>
+    <tr> 
+      <th scope="row"><%=customer.fname%></th>
+      <td><%=customer.lname%></td>
+      <td><%=customer.email%></td>
+      <td><%=customer.phone_number%></td>
+      <td><button type="button" class="btn btn-link"><%= link_to "Show", customer_path(customer), class:"btn btn-primary", method: :get %></button>
+        <button type="button" class="btn btn-link"><%= link_to " Edit", edit_customer_path(customer), class:"btn btn-primary", method: :get %></button>
+        <button type="button" class="btn btn-link"><%= button_to " Destroy", customer_path(customer), class:"btn btn-primary", method: :delete %></button>
+      </td>
+    </tr>
+  <%end%> 
+</tbody>
+</table><br>                                      
+     <button type="button " class="btn btn-link"><%= link_to "Add new Customer", new_customer_path, class:"btn btn-primary", method: :get %></button> 
+</body>
+</html>

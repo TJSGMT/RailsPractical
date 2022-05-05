@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-md-3">
+      <div class="mb-3">
+        <div class="card" style="width: 18rm">
+          <div class="card-body">
+            <div class="text-center"><b>Most Sales Product By Quantity<b><br>
+                <% @product_by_quantity.each do |order| %>
+                <tr>
+                  <td class="text-center">cusotmer Id :- <%= order.customer_id %> </td><br>
+                  <td class="text-center">customer Name :- <%= order.customer.fname + " " + order.customer.lname %></td><br>
+                  <td class="text-center"> Quantity :- <%= order.Sum_Quantity %> </td><br><br>
+                </tr>
+              <% end %>
+          </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="col-md-3">
+    <div class="mb-3">
+      <div class="card" style="width: 18rm">
+        <div class="card-body">
+          <div class="text-center"><b>Most Sales Product By Price<b><br>
+            <% @product_by_price.each do |order| %>
+              <tr>
+                <td class="text-center">Customer Id:-  <%= order.customer_id %> </td><br>
+                <td class="text-center"> Customer Name:-  <%= order.customer.fname + " " + order.customer.lname %></td><br>
+                <td class="text-center"> Quantity:-  <%= order.Sum_Total_price %> </td><br><br>
+              </tr>
+           <% end %>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <div class="col-md-3">
+    <div class="mb-3">
+      <div class="card" style="width: 18rm">
+        <div class="card-body">
+          <div class="text-center"> top 5 customer who has maximum booked orders <br>
+            <% @booked.each do |order| %>
+              <tr>
+                <td class="text-center"> <%= Order.where(customer_id:order.customer_id).where(status:0).count %></td>
+                <td class="text-center"> <%= order.customer.fname + " " + order.customer.lname %> </td><br>
+                <td class="text-center"> <%= order.customer.email %> </td><br>
+                <td class="text-center"> <%= order.customer.phone_number %> </td><br><br>
+              </tr>
+            <% end %>
+        </div>  
+       </div>
+      </div>
+    </div>
+  </div>  
+  <div class="col-md-3">
+    <div class="mb-3">
+      <div class="card" style="width: 18rm">
+        <div class="card-body">
+          <div class="text-center"> top 5 customer who has maximum Cancelled orders <br>
+            <% @cancel.each do |order| %>
+              <tr>
+                <td class="text-center"> <%= Order.where(customer_id:order.customer_id).where(status:1).count %></td>
+                <td class="text-center"> <%= order.customer.fname + " " + order.customer.lname %> </td><br>
+                <td class="text-center"> <%= order.customer.email %> </td><br>
+                <td class="text-center"> <%= order.customer.phone_number %> </td><br><br>
+              </tr>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
