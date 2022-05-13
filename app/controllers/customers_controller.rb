@@ -5,7 +5,7 @@ before_action :find_customer, only: [:show, :edit, :update, :destroy]
       @customers = Customer.all
   end
   
-    def new
+  def new
       @customer = Customer.new
   end
   
@@ -16,20 +16,20 @@ before_action :find_customer, only: [:show, :edit, :update, :destroy]
     else
       flash[:errors] = @customer.errors.full_messages
       redirect_to new_customer_path  
-      end
     end
-  
+  end
+
   def show
   end
-  
+
   def edit
   end
-  
+
   def update
     @customer.update(customer_params)
     redirect_to customers_path(@customer)
   end
-  
+
   def destroy
     @customer.destroy
     redirect_to customers_path

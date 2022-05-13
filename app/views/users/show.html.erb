@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+     <h5 class="text-white h4">Welcome <%= @user.Username%></h5>
+      <button type="button" class="btn btn-link"><%= link_to "Home", events_path , method: :get %></button><br>
+      <button type="button" class="btn btn-link"><%= link_to "Edit Profile", edit_path , method: :get %></button><br> 
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav><br>
+<div class="text-center">
+<h1>User profile page</h1><br>
+<h2>User Name  :-  <%= @user.Username%></h2>
+<h2>Address  :- <%= @user.address.Addresses%>
+<table>
+    <th>
+      <h2>Enrolled Events</h2>
+    <th>
+  <tr>
+    <th>
+      Name
+    </th>
+    <th>
+      On date
+    </th>
+  </tr> 
+  <% @enrolled_events.each do |enrolled_event| %>
+    <tr>
+      <td>
+        <%= enrolled_event.name %>
+      </td>
+      <td>
+        <%= enrolled_event.event_date %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+</div>

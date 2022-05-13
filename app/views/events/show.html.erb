@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <button type="button" class="btn btn-link"><%= link_to "Home", events_path , method: :get %></button><br>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav><br>
+<div class="text-center">
+<h1>Event Details</h1><br><br>
+<h2>Event Name  :-  <%= @event.name%></h2>
+<h2>Description  :- <%= @event.description %><br></h2>
+<h2>Event date  :-  <%= @event.event_date%><br></h2>
+<h2>Created By :-  <%= @enroll_user.Username%><br>
+<table>
+  <tr>
+    <th>Comment</th>
+    <th>Commented_by</th>
+    <% if session[:user_id] %>
+      <th>Action</th>
+    <% end %>
+    <th>Liked_by</th>
+  </tr>
+  <% @event.comments.each do |comment| %>
+    <tr>
+      <td>
+      Comment : <%= comment.comment %>
+      </td>
+      <td>
+      Commented By : <%= User.select(:Username).where(id:comment.user_id)[0].Username %>
+      </td>
+      <% if session[:user_id] %>
+        <td>
+          <% if comment.user_id == session[:user_id] %>
+            <%= link_to "Delete",delete_comment_path(comment), class: "btn btn-danger" %>
+          <% else %>
+            <% if comment.liked_by.include? session[:user_id] %>
+            <%= link_to "Unlike", unlike_comment_path(comment), class: "btn btn-warning" %>
+            <% else %>
+              <%= link_to "like", like_comment_path(comment), class: "btn btn-info" %>
+            <% end %>
+          <% end %>
+        </td>
+      <% end %>
+      <td>
+        <% comment.liked_by.each do |u| %>
+          <%= User.select(:Username).where(id:u)[0].Username %>,
+        <% end %>
+      </td>
+    </tr>
+  <%   end %>
+</table>
+<%if session[:user_id] == @enroll_user.id %>
+  <%= link_to " Edit", edit_event_path(@event), class:"btn btn-secondary", method: :get %><br>
+  <%= button_to " Destroy", event_path(@event), class:"btn btn-danger", method: :delete %>
+<% end %>
+  <% if session[:user_id] %>
+    <%= link_to "Add Comments", new_comment_path(@event), class:"btn btn-primary", method: :get %><br>
+  <% end %>
+</div>

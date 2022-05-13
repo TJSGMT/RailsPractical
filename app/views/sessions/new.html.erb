@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <button type="button" class="btn btn-link"><%= link_to "Home", events_path , method: :get %></button><br>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav><br>
+   <p class="alert alert-success"><%= notice %></p>
+    <div class="d-flex  align-items-center  justify-content-center">
+    <h1 class="text-center">User Login</h1><br><br>
+    
+    </div>
+<%= form_tag @sessions_path, remote: false do |f| %>
+  <p><%= text_field_tag :Username, nil, class:'form-control',placeholder:"Enter email"%></p>
+  <p><%= text_field_tag :password,nil,type:'password', class:'form-control',placeholder:"Enter Password"%></p><br>
+  <h4><%= submit_tag :Login, class: 'btn btn-primary'%></h4>
+<%end%><br>
+<%= link_to "New to the page ?", sign_up_path, method: :get %>

@@ -1,0 +1,7 @@
+<div class="container">
+  <h2>Add Comments.</h2><br>
+  <%= form_for @comment, url: comments_path(@event.id) do |f|%>
+  <%= f.text_area :comment  ,class: "form-control" %> <br>
+  <%= f.submit "Add Comments" ,class:"btn btn-primary" %>
+  <% end %>
+</div> 
