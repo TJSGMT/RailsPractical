@@ -10,21 +10,21 @@
 <body>
 <div class="d-flex  align-items-center  justify-content-center">
 <h1> Auhtor's Index</h1>
-</div><br><br>
-<table class="table  table-hover">
-<thead>
-  <tr>
-    <th scope="col">First name</th>
-    <th scope="col">Last name</th>
-    <th scope="col">Date of Birth</th>
-    <th scope="col">E-mail</th>
-    <th></th>
-  </tr>
-</thead>
-<tbody>
-  <% @authors.each do |author|%>
-  <tr> 
-    <th scope="row"><%=author.first_name%></th>
+ </div>   <br><br>
+ <table class="table  table-hover">
+  <thead>
+    <tr>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Date of Birth</th>
+      <th scope="col">E-mail</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @authors.each do |author|%>
+    <tr> 
+      <th scope="row"><%=author.first_name%></th>
       <td><%=author.last_name%></td>
       <td><%=author.dob %><td>
       <td><%=author.email%></td>
@@ -36,7 +36,7 @@
   <%end%>
 </tbody>
 </table><br>
-        <button type="button " class="btn btn-link"><%= link_to "Add new Author", new_author_path, class:"btn btn-primary", method: :get   %>
+<button type="button " class="btn btn-link"><%= link_to "Add new Author", new_author_path, class:"btn btn-primary", method: :get   %>
 </button> 
         <button type="button" class="btn btn-link"><%= link_to "Add new Book  ", new_book_path, class:"btn btn-primary", method: :get   %>
 </button>

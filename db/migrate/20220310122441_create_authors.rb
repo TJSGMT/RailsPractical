@@ -5,7 +5,6 @@ class CreateAuthors < ActiveRecord::Migration[7.0]
       t.string :last_name
       t.string :dob
       t.string :email
-
       t.timestamps
     end
   end

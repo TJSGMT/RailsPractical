@@ -1,14 +1,14 @@
 class CustomersController < ApplicationController
-  before_action :find_customer, only: [:show, :edit, :update, :destroy]
+before_action :find_customer, only: [:show, :edit, :update, :destroy]
 
   def index
       @customers = Customer.all
-    end
+  end
   
   def new
-    @customer = Customer.new
+      @customer = Customer.new
   end
-
+  
   def create
     @customer = Customer.new(customer_params)
     if @customer.save
