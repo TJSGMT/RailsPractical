@@ -1,0 +1,14 @@
+<%if flash[:notice]%>
+  <%= flash[:notice]%>
+<%end%> 
+<div class="container ">
+  <div class="d-flex  justify-content-center">
+    <h1> Add Orders</h1>
+  </div><br>
+  <%= form_for @orderr do |f|%>
+    <p><%= f.text_field :quantity, class:"form-control", placeholder:"Enter Quantity"%></p>
+    <p><%= f.text_field :quantity, class:"form-control", placeholder:" Total price"%></p>
+    <%= f.submit class: "btn btn-primary"%>
+  <%end%>
+</div>
+    
