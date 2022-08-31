@@ -20,7 +20,7 @@ class EmployeesController < ApplicationController
     @employee = Employee.find_or_create_by(employee_params)
     if @employee.save
       redirect_to employees_path
-    else
+    else  
       flash[:errors] = @employee.errors.full_messages
       redirect_to new_employee_path
     end   

@@ -36,7 +36,7 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :join_event]
 
   def edit  
   end
-
+  
   def update
     @event.update(event_params)
     redirect_to events_path

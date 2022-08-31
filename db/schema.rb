@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_26_110549) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_03_124443) do
   create_table "addresses", force: :cascade do |t|
     t.string "Addresses"
     t.integer "user_id", null: false
@@ -58,6 +58,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_26_110549) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_comments_on_event_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "customerrs", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.integer "ph_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -126,6 +135,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_26_110549) do
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable"
   end
 
+  create_table "orderrs", force: :cascade do |t|
+    t.string "quantity"
+    t.integer "total_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string "quantity"
     t.integer "total_price"
@@ -152,6 +168,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_26_110549) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "brand_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "productts", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
